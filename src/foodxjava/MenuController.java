@@ -7,10 +7,15 @@ package foodxjava;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +29,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -37,6 +47,8 @@ public class MenuController implements Initializable {
     @FXML
     private JFXTextField nomtxt ;
     @FXML
+    private JFXTextField nomtxt3 ;
+    @FXML
     private JFXTextField prixtxt;
     @FXML
     private JFXTextField poidstxt;
@@ -47,11 +59,64 @@ public class MenuController implements Initializable {
     @FXML
     private JFXComboBox vegtxt;
     @FXML
+    private JFXTextField nomtxt2 ;
+    @FXML
+    private JFXTextField prixtxt2;
+    @FXML
+    private JFXTextField poidstxt2;
+        @FXML
+    private JFXTextField Supprimertxt;
+    @FXML
+    private JFXTextArea descriptiontxt2;
+    @FXML
+    private JFXComboBox Categorytxt2;
+    @FXML
+    private JFXComboBox vegtxt2;
+    @FXML
     private JFXButton valider ;
         @FXML
     private JFXButton exit ;       
     @FXML
     private JFXButton back ;
+        @FXML
+    private JFXButton afficher ;
+    @FXML
+    private JFXTabPane Tabp ;
+        @FXML
+    private JFXButton buttongerer ;
+                @FXML
+    private JFXButton buttonsupprimer ;
+
+                
+                @FXML
+    private TableView<ModelTable1> table1;
+
+    @FXML
+    private TableColumn<ModelTable1, String> MenuidCol1;
+
+    @FXML
+    private TableColumn<ModelTable1, String> MenuNameCol1;
+
+    @FXML
+    private TableColumn<ModelTable1, String> poidsCol1;
+
+    @FXML
+    private TableColumn<ModelTable1, String> prixCol1;
+    @FXML
+    private TableColumn<ModelTable1, String> descriptionCol1;
+    
+    @FXML
+    private TableColumn<ModelTable1, String> categorieCol1;
+   
+    @FXML
+    private TableColumn<ModelTable1, String> isvegCol1;
+
+    
+
+    boolean type ;
+    public static int i;
+    Connection con; //connection for table 
+    ObservableList<ModelTable1> obList1= FXCollections.observableArrayList();
 
         
     /**
@@ -67,13 +132,28 @@ public class MenuController implements Initializable {
     );
          Categorytxt.setValue("Option 1");
          Categorytxt.setItems(options);
+                  Categorytxt2.setValue("Option 1");
+         Categorytxt2.setItems(options);
                  ObservableList<String> options2 = 
     FXCollections.observableArrayList(
         "Yes",
         "Non"
     );
+         prixCol1.setCellValueFactory(new PropertyValueFactory<>("Prix"));
+         MenuidCol1.setCellValueFactory(new PropertyValueFactory<>("Nom Repas"));
+         poidsCol1.setCellValueFactory(new PropertyValueFactory<>("Poids"));
+         descriptionCol1.setCellValueFactory(new PropertyValueFactory<>("Description"));
+         MenuNameCol1.setCellValueFactory(new PropertyValueFactory<>("menuname"));  
+         categorieCol1.setCellValueFactory(new PropertyValueFactory<>("quantity_item"));
+         isvegCol1.setCellValueFactory(new PropertyValueFactory<>("status"));
+tableConnection1();
+       table1.setItems(obList1);
+       table1.refresh();
+
          vegtxt.setValue("Yes");
          vegtxt.setItems(options2);
+         vegtxt2.setValue("Yes");
+         vegtxt2.setItems(options2);
           if(menuModel.isDbConnected()){
              System.out.println("Db connected");
         }else{
@@ -120,9 +200,49 @@ public class MenuController implements Initializable {
            
        } catch (SQLException ex) {
            infoBox("please fill balnk fields",null,"Alert" );
+       }
+      }  
+        public void UpdateMenu(ActionEvent event){
+       String menu_name=nomtxt2.getText();
+       String categorie= Categorytxt2.getValue().toString();
+       String  description=descriptiontxt2.getText();
+       int price=Integer.valueOf(prixtxt2.getText());
+       double poids=Double.valueOf(poidstxt2.getText());
+       boolean  vegetarien=("Yes".equals(vegtxt2.getValue().toString()));
+       try {
+              if((menu_name.isEmpty()|| categorie.isEmpty() || description.isEmpty()  )){
+               infoBox("Enter valid fields",null,"Error");
+           }else{
+               menuModel.MenuUpdate(menu_name,  price, description, poids, vegetarien, categorie);
+               infoBox(" updated Sucessfully\n Menu Name is:"+menu_name,null,"Success" );
+               nomtxt2.clear();
+               descriptiontxt2.clear(); 
+               prixtxt2.clear();
+               poidstxt2.clear();
+           }
+         } catch (SQLException ex) {
+           infoBox("please fill balnk fields",null,"Alert" );
+       }
+            
+        
+    }
+        public void DeleteMenu(ActionEvent event){
+       String nom=nomtxt3.getText();
+       try {
+              if(nom.isEmpty() ){
+               infoBox("Enter valid fields",null,"Error");
+           }else{
+               menuModel.Menudelete(nom);
+               infoBox(" deleted Sucessfully\n Menu Name is:"+nom,null,"Success" );
+               nomtxt3.clear();
+           }
+         } catch (SQLException ex) {
+           infoBox("please fill balnk fields",null,"Alert" );
            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
        }
-      }
+            
+        
+    }
           public static void infoBox(String infoMessage, String headerText, String title){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText(infoMessage);
@@ -131,4 +251,20 @@ public class MenuController implements Initializable {
         alert.showAndWait();
     }
 
-}
+    public void tableConnection1(){
+        
+        try {
+
+            String query="SELECT * FROM `menu`";
+            ResultSet rs =con.createStatement().executeQuery(query);
+            while(rs.next()){
+                obList1.add(new ModelTable1( rs.getInt("id_menu"), rs.getString("nom"),rs.getDouble("Prix") ,rs.getDouble("poids"),rs.getBoolean("vegetarien"),rs.getString("category"),rs.getString("description")) );
+            
+            }
+
+        } catch (SQLException ex) {
+        }
+    }
+    
+
+    }

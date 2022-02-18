@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 package foodxjava;
+import static foodxjava.MenuController.i;
+import static foodxjava.MenuController.infoBox;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 /**
  *
  * @author Ilyes
@@ -37,24 +40,60 @@ public class MenuModel {
         }
         
     } 
-     public void MenuAdd(String nom, double prix,String description,double poids,boolean vegetarien, String category) throws SQLException{
+     public void MenuAdd(String menu_name, double price,String description,double poids,boolean vegetarien, String categorie) throws SQLException{
         PreparedStatement preparedStatement =null;
-        String query="insert into produit (nom ,prix,description,poids,vegetarien,category)"+"value(?,?,?,?,?,?)";
+        String query="insert into menu (menu_name ,price,categorie,description,vegetarien,poids)"+"value(?,?,?,?,?,?)";
       try {
           preparedStatement=connection.prepareStatement(query);
-          preparedStatement.setString(1,nom);
-          preparedStatement.setDouble(2,prix);
-          preparedStatement.setString(3,description);
-          preparedStatement.setDouble(4,poids);
+          preparedStatement.setString(1,menu_name);
+          preparedStatement.setDouble(2,price);
+          preparedStatement.setString(3, categorie);
+          preparedStatement.setString(4,description);
           preparedStatement.setBoolean(5,vegetarien);
-          preparedStatement.setString(6, category);
+          preparedStatement.setDouble(6,poids);
 
           preparedStatement.execute();
       } catch (SQLException ex) {
           Logger.getLogger(MenuModel.class.getName()).log(Level.SEVERE, null, ex);
       }finally{
-          connection.close();
       }
 
     }
+         public void MenuUpdate( String menu_name , int price,String description,double poids,boolean vegetarien, String categorie) throws SQLException{
+        PreparedStatement preparedStatement =null;
+        String query="Update menu SET price=? ,categorie=? ,description=? ,vegetarien=? , poids=? where  menu_name=?";
+try {
+          preparedStatement=connection.prepareStatement(query);
+          preparedStatement.setInt(1,price);
+          preparedStatement.setString(2,categorie);
+          preparedStatement.setString(3,description);
+          preparedStatement.setBoolean(4,vegetarien);
+          preparedStatement.setDouble(5, poids);
+          preparedStatement.setString(6,menu_name);
+
+          preparedStatement.execute();
+      } catch (SQLException ex) {
+          Logger.getLogger(MenuModel.class.getName()).log(Level.SEVERE, null, ex);
+      }finally{
+      }
+
+     
+    }
+         public void Menudelete( String menu_name) throws SQLException{
+        PreparedStatement preparedStatement =null;
+        String query="Delete from  menu  where  menu_name=?";
+try {
+          preparedStatement=connection.prepareStatement(query);
+
+          preparedStatement.setString(1,menu_name);
+
+          preparedStatement.execute();
+      } catch (SQLException ex) {
+          Logger.getLogger(MenuModel.class.getName()).log(Level.SEVERE, null, ex);
+      }finally{
+      }
+
+     
+    }
+         
 }
