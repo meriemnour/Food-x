@@ -26,15 +26,15 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
      public void MenuScreen(ActionEvent event) throws Exception  {
-		Stage primaryStage =new Stage();
-                primaryStage.initStyle(StageStyle.UNDECORATED);
-		Parent root =FXMLLoader.load(getClass().getResource("Menu.fxml"));
-		Scene scene = new Scene(root);
+              Node node = (Node)event.getSource();
+                Stage primaryStage =new Stage();
+               Stage dialogStage = (Stage) node.getScene().getWindow();
+               dialogStage.close();
+               Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Menu.fxml")));
 		primaryStage.setScene(scene);
-		primaryStage.show();
                 
-            // Hide this current window (if this is what you want)
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+               dialogStage.setScene(scene);
+               dialogStage.show();
 	}
     @Override
     public void initialize(URL url, ResourceBundle rb) {

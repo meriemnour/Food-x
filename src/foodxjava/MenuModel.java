@@ -96,4 +96,19 @@ try {
      
     }
          
+       public void cart_add(int menu_id) throws SQLException{
+        PreparedStatement preparedStatement = null ;
+        String query="insert into orders(menu_id,order_status)"+"values(?,'ADDED_TO_CART')";
+        try {
+            preparedStatement =connection.prepareStatement(query);
+            preparedStatement.setInt(1, menu_id);
+            preparedStatement.execute();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuModel.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            preparedStatement.close();
+        }
+        
+    }      
 }

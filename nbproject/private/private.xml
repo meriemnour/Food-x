@@ -6,11 +6,14 @@
             <file>file:/D:/FoodxJava/src/foodxjava/FXMLDocumentController.java</file>
             <file>file:/D:/FoodxJava/src/foodxjava/FoodxJava.java</file>
             <file>file:/D:/FoodxJava/src/foodxjava/SqlConnection.java</file>
+            <file>file:/D:/FoodxJava/src/foodxjava/Payment.fxml</file>
             <file>file:/D:/FoodxJava/src/foodxjava/MenuModel.java</file>
             <file>file:/D:/FoodxJava/src/foodxjava/MenuController.java</file>
+            <file>file:/D:/FoodxJava/src/foodxjava/PaymentController.java</file>
             <file>file:/D:/FoodxJava/src/foodxjava/FXMLDocument.fxml</file>
             <file>file:/D:/FoodxJava/src/foodxjava/Menu.fxml</file>
             <file>file:/D:/FoodxJava/src/foodxjava/ModelTable1.java</file>
+            <file>file:/D:/FoodxJava/src/foodxjava/PaymentModel.java</file>
         </group>
     </open-files>
 </project-private>

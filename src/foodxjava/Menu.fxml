@@ -66,9 +66,11 @@
                               <TableColumn fx:id="poidsCol1" prefWidth="109.0" text="Column X" />
                               <TableColumn fx:id="isvegCol1" prefWidth="83.0" text="Column X" />
                               <TableColumn fx:id="categorieCol1" prefWidth="132.0" text="Column X" />
-                              <TableColumn fx:id="descriptionCol1" prefWidth="147.0" text="Column X" />
+                              <TableColumn fx:id="descriptionCol1" prefWidth="21.0" text="Column X" />
                           </columns>
                         </TableView>
+                        <JFXButton layoutX="62.0" layoutY="32.0" onAction="#AddOrder" />
+                        <JFXTextField fx:id="nomtxt4" layoutX="162.0" layoutY="32.0" />
                      </children>
                   </AnchorPane>
               </content>

@@ -15,76 +15,50 @@ import javafx.beans.property.SimpleStringProperty;
  * @author Ilyes
  */
 public class ModelTable1 {
-    private final SimpleStringProperty nom_menu;
-    private final SimpleIntegerProperty id_menu;
-    private final SimpleDoubleProperty poids_menu;
-    private final SimpleDoubleProperty prix_menu;
-    private final SimpleStringProperty description_menu;
-    private final SimpleStringProperty categorie_menu;
-    private final SimpleBooleanProperty veg_menu;
+    private final SimpleStringProperty menuname;
+    private final SimpleIntegerProperty menuid;
+    private final SimpleIntegerProperty quantity_item;
+    private final SimpleIntegerProperty price;
 
-   public ModelTable1( int id_menu, String nom_menu, double prix_menu, double poids_menu ,  boolean veg_menu ,String categorie_menu ,String description_menu ) {
-        this.nom_menu = new SimpleStringProperty(nom_menu);
-        this.id_menu = new SimpleIntegerProperty(id_menu);
-        this.veg_menu = new SimpleBooleanProperty(veg_menu);
-        this.prix_menu = new SimpleDoubleProperty(prix_menu);   
-        this.poids_menu = new SimpleDoubleProperty(poids_menu);
-
-                this.description_menu = new SimpleStringProperty(description_menu);
-        this.categorie_menu = new SimpleStringProperty(categorie_menu);
-
+    public ModelTable1(String menuname, int menuid, int quantity_item, int price) {
+        this.menuname = new SimpleStringProperty(menuname);
+        this.menuid = new SimpleIntegerProperty(menuid);
+        this.quantity_item = new SimpleIntegerProperty(quantity_item);
+        this.price = new SimpleIntegerProperty(price);
     }
 
     public String getMenuname() {
-        return nom_menu.get();
+        return menuname.get();
     }
 
-    public void setMenuname(String nom_menu) {
-        this.nom_menu.set(nom_menu);
+    public void setMenuname(String menuname) {
+        this.menuname.set(menuname);
     }
 
     public int getMenuid() {
-        return id_menu.get();
+        return menuid.get();
     }
 
-    public void setMenuid(int id_menu) {
-        this.id_menu.set(id_menu); 
+    public void setMenuid(int menuid) {
+        this.menuid.set(menuid); 
     }
 
-    public String getCategorie() {
-        return categorie_menu.get();
+    public int getQuantity_item() {
+        return quantity_item.get();
     }
 
-    public void setCategorie(String categorie_menu) {
-        this.categorie_menu.set(categorie_menu);
+    public void setQuantity_item(int quantity_item) {
+        this.quantity_item.set(quantity_item);
     }
 
-    public double getPrix() {
-        return prix_menu.get();
+    public int getPrice() {
+        return price.get();
     }
 
-    public void setPrix(double prix_menu) {
-        this.prix_menu.set(prix_menu);
+    public void setPrice(int price) {
+        this.price.set(price);
     }
-    public double getPoids() {
-        return poids_menu.get();
-    }
-    public void setPoids(int poids_menu) {
-        this.poids_menu.set(poids_menu);
-    }
-        public String getDescription() {
-        return description_menu.get();
-    }
-    public void setDescription(String description_menu) {
-        this.description_menu.set(description_menu);
-    }   
-        public boolean getVeg() {
-        return veg_menu.get();
-    }
-    public void setDescription(boolean veg_menu) {
-        this.veg_menu.set(veg_menu);
-    }   
 
-
+    
     
 }

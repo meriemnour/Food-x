@@ -69,6 +69,8 @@
                               <TableColumn fx:id="descriptionCol1" prefWidth="147.0" text="Column X" />
                           </columns>
                         </TableView>
+                        <JFXButton layoutX="62.0" layoutY="32.0" onAction="#AddOrder" />
+                        <JFXTextField fx:id="nomtxt4" layoutX="162.0" layoutY="32.0" />
                      </children>
                   </AnchorPane>
               </content>

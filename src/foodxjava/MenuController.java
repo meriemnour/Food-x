@@ -58,6 +58,8 @@ public class MenuController implements Initializable {
     private JFXComboBox Categorytxt;
     @FXML
     private JFXComboBox vegtxt;
+        @FXML
+    private JFXTextField nomtxt4 ;
     @FXML
     private JFXTextField nomtxt2 ;
     @FXML
@@ -145,11 +147,11 @@ public class MenuController implements Initializable {
          descriptionCol1.setCellValueFactory(new PropertyValueFactory<>("Description"));
          MenuNameCol1.setCellValueFactory(new PropertyValueFactory<>("menuname"));  
          categorieCol1.setCellValueFactory(new PropertyValueFactory<>("quantity_item"));
-         isvegCol1.setCellValueFactory(new PropertyValueFactory<>("status"));
+         isvegCol1.setCellValueFactory(new PropertyValueFactory<>("status"));/*
 tableConnection1();
        table1.setItems(obList1);
-       table1.refresh();
-
+       table1.refresh();*/
+        
          vegtxt.setValue("Yes");
          vegtxt.setItems(options2);
          vegtxt2.setValue("Yes");
@@ -253,18 +255,41 @@ tableConnection1();
 
     public void tableConnection1(){
         
+        
+         table1.getItems().clear();
         try {
-
-            String query="SELECT * FROM `menu`";
+             
+            String query="SELECT menu.price as Price ,menu.menu_id,menu.menu_name as Name,quantity FROM orders JOIN menu ON orders.menu_id=menu.menu_id WHERE orders.customer_id="+i+" and order_status='ADDED_TO_CART'";
             ResultSet rs =con.createStatement().executeQuery(query);
             while(rs.next()){
-                obList1.add(new ModelTable1( rs.getInt("id_menu"), rs.getString("nom"),rs.getDouble("Prix") ,rs.getDouble("poids"),rs.getBoolean("vegetarien"),rs.getString("category"),rs.getString("description")) );
-            
+                obList1.add(new ModelTable1(rs.getString("Name"), rs.getInt("menu_id"),rs.getInt("quantity"), rs.getInt("Price")));
             }
-
         } catch (SQLException ex) {
+            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-
+        public void AddOrder(ActionEvent event){
+       int nom=Integer.valueOf(nomtxt4.getText());
+       try {
+              if(nom==0){
+               infoBox("Enter valid fields",null,"Error");
+           }else{
+               menuModel.cart_add(nom);
+               infoBox(" deleted Sucessfully\n Menu Name is:"+nom,null,"Success" );
+               nomtxt4.clear();
+           }
+         } catch (SQLException ex) {
+           infoBox("please fill balnk fields",null,"Alert" );
+           Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
+
+
+
+
+
+
+
+
+}
