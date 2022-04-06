@@ -1,0 +1,326 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+ {% block body %}
+     
+      <div id="layoutSidenav">
+         <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+               <div class="sb-sidenav-menu">
+                  <div class="nav">
+                     <div class="sb-sidenav-menu-heading">Core</div>
+                     <a class="nav-link" href="/Back/index.html">
+                        <div class="sb-nav-link-icon"><i class="feather-home"></i></div>
+                        Dashboard
+                     </a>
+                     <a class="nav-link" href="/Back/messages.html">
+                        <div class="sb-nav-link-icon"><i class="feather-message-square"></i></div>
+                        Messages
+                     </a>
+                     <a class="nav-link" href="/Back/bookings.html">
+                        <div class="sb-nav-link-icon"><i class="feather-calendar"></i></div>
+                        Bookings <span class="badge badge-pill ml-2 badge-primary">6 New</span>
+                     </a>
+                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
+                        <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                        My listings
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                     </a>
+                     <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                           <a class="nav-link" href="/Back/listings.html">Pending <span class="badge badge-pill ml-2 badge-primary">6</span></a>
+                           <a class="nav-link" href="/Back/listings.html">Active <span class="badge badge-pill ml-2 badge-success">5</span></a>
+                           <a class="nav-link" href="/Back/listings.html">Expired <span class="badge badge-pill ml-2 badge-danger">4</span></a>                                
+                        </nav>
+                     </div>
+                     <a class="nav-link" href="/Back/reviews.html">
+                        <div class="sb-nav-link-icon"><i class="feather-star"></i></div>
+                        Reviews
+                     </a>
+                     <a class="nav-link" href="/Back/bookmarks.html">
+                        <div class="sb-nav-link-icon"><i class="feather-heart"></i></div>
+                        Bookmarks
+                     </a>
+                     <a class="nav-link" href="/Back/add-listing.html">
+                        <div class="sb-nav-link-icon"><i class="feather-plus-circle"></i></div>
+                        Add listing
+                     </a>
+                     <a class="nav-link" href="add-listing-with-menu-list.html">
+                        <div class="sb-nav-link-icon"><i class="feather-book-open"></i></div>
+                        Menu List
+                     </a>
+                     <a class="nav-link" href="/Back/orders.html">
+                        <div class="sb-nav-link-icon"><i class="feather-shopping-cart"></i></div>
+                        Orders Page
+                     </a>
+                     <a class="nav-link" href="/Back/edit-order.html">
+                        <div class="sb-nav-link-icon"><i class="feather-settings"></i></div>
+                        Edit Order
+                     </a>
+                     <a class="nav-link" href="/Back/my-profile.html">
+                        <div class="sb-nav-link-icon"><i class="feather-user"></i></div>
+                        My Profile
+                     </a>
+                     <div class="sb-sidenav-menu-heading">Interface</div>
+                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="feather-layout"></i></div>
+                        Layouts
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                     </a>
+                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                           <a class="nav-link" href="/Back/layout-static.html">Static Navigation</a>
+                           <a class="nav-link" href="/Back/layout-sidenav-light.html">Light Sidenav</a>
+                        </nav>
+                     </div>
+                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="feather-book"></i></div>
+                        Pages
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                     </a>
+                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                              Authentication
+                              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           </a>
+                           <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                              <nav class="sb-sidenav-menu-nested nav">
+                                 <a class="nav-link" href="/Back/login.html">Login</a>
+                                 <a class="nav-link" href="/Back/register.html">Register</a>
+                                 <a class="nav-link" href="/Back/password.html">Forgot Password</a>
+                              </nav>
+                           </div>
+                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                              Error
+                              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           </a>
+                           <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                              <nav class="sb-sidenav-menu-nested nav">
+                                 <a class="nav-link" href="/Back/401.html">401 Page</a>
+                                 <a class="nav-link" href="/Back/404.html">404 Page</a>
+                                 <a class="nav-link" href="/Back/500.html">500 Page</a>
+                              </nav>
+                           </div>
+                        </nav>
+                     </div>
+                     <div class="sb-sidenav-menu-heading">Addons</div>
+                     <a class="nav-link" href="/Back/charts.html">
+                        <div class="sb-nav-link-icon"><i class="feather-pie-chart"></i></div>
+                        Charts
+                     </a>
+                     <a class="nav-link" href="/Back/tables.html">
+                        <div class="sb-nav-link-icon"><i class="feather-grid"></i></div>
+                        Tables
+                     </a>
+                  </div>
+               </div>
+               <div class="sb-sidenav-footer">
+                  <div class="small">Logged in as:</div>
+                  Ask Bootstrap
+               </div>
+            </nav>
+         </div>
+         <div id="layoutSidenav_content">
+            <main>
+               <div class="container-fluid">
+                  <h1 class="mt-4">Dashboard</h1>
+                  <ol class="breadcrumb mb-4">
+                     <li class="breadcrumb-item active">Dashboard</li>
+                  </ol>
+                  <div class="row">
+                     <div class="col-xl-3 col-md-6">
+                        <div class="card bg-primary text-white mb-4">
+                           <div class="card-body">26 New Messages!</div>
+                           <div class="card-footer d-flex align-items-center justify-content-between">
+                              <a class="small text-white stretched-link" href="/Back/messages.html">View Details</a>
+                              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-3 col-md-6">
+                        <div class="card bg-warning text-white mb-4">
+                           <div class="card-body">10 New Bookings!</div>
+                           <div class="card-footer d-flex align-items-center justify-content-between">
+                              <a class="small text-white stretched-link" href="/Back/bookings.html">View Details</a>
+                              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-3 col-md-6">
+                        <div class="card bg-success text-white mb-4">
+                           <div class="card-body">11 New Reviews!</div>
+                           <div class="card-footer d-flex align-items-center justify-content-between">
+                              <a class="small text-white stretched-link" href="/Back/reviews.html">View Details</a>
+                              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-3 col-md-6">
+                        <div class="card bg-danger text-white mb-4">
+                           <div class="card-body">10 New Bookmarks!</div>
+                           <div class="card-footer d-flex align-items-center justify-content-between">
+                              <a class="small text-white stretched-link" href="/Back/bookmarks.html">View Details</a>
+                              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-xl-6">
+                        <div class="card mb-4">
+                           <div class="card-header">
+                              <i class="fas fa-chart-area mr-1"></i>
+                              Sales earnings this month
+                           </div>
+                           <div class="card-body">
+                              <canvas id="myAreaChart" width="100%" height="40"></canvas>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-6">
+                        <div class="card mb-4">
+                           <div class="card-header">
+                              <i class="fas fa-chart-bar mr-1"></i>
+                              All Time Earnings
+                           </div>
+                           <div class="card-body">
+                              <canvas id="myBarChart" width="100%" height="40"></canvas>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card mb-4">
+                     <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        RECENT 10 ORDER
+                     </div>
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                 <tr class="text-uppercase">
+                                    <th>User</th>
+                                    <th>User Name</th>
+                                    <th>Restaurant</th>
+                                    <th>Status</th>
+                                    <th>Ordered on</th>
+                                    <th>Total</th>
+                                    <th>Quantity</th>
+                                    <th>Action</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <!----><!---->
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/1.png"></td>
+                                    <td> Rhona Davidson	</td>
+                                    <td>Metro Resto</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-success btn-round">delivered</button></td>
+                                    <td>Sat, Jul 11, 2020 1:38 AM</td>
+                                    <td>$262.49</td>
+                                    <td>4</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/2.png"></td>
+                                    <td> Herrod Chandler	</td>
+                                    <td>Metro Resto</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-danger btn-round">cancel</button></td>
+                                    <td>Fri, Jul 10, 2020 4:55 PM</td>
+                                    <td>$170.77</td>
+                                    <td>5</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/3.png"></td>
+                                    <td> Airi Satou	</td>
+                                    <td>Metro Resto</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-success btn-round">delivered</button></td>
+                                    <td>Fri, Jul 10, 2020 3:48 PM</td>
+                                    <td>$26.78</td>
+                                    <td>2</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/4.png"></td>
+                                    <td> Brielle Williamson	</td>
+                                    <td>The Square restaurants</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-primary btn-round">created</button></td>
+                                    <td>Fri, Jul 10, 2020 2:24 PM</td>
+                                    <td>$81.23</td>
+                                    <td>2</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/5.png"></td>
+                                    <td> Cedric Kelly	</td>
+                                    <td>Metro Resto</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-success btn-round">delivered</button></td>
+                                    <td>Fri, Jul 10, 2020 11:45 AM</td>
+                                    <td>$1578.00</td>
+                                    <td>1</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/6.png"></td>
+                                    <td> Ashton Cox	</td>
+                                    <td>The Square restaurants</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-primary btn-round">created</button></td>
+                                    <td>Fri, Jul 10, 2020 11:37 AM</td>
+                                    <td>$238.53</td>
+                                    <td>4</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/1.png"></td>
+                                    <td> Garrett Winters	</td>
+                                    <td>Metro Resto</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-danger btn-round">rejected</button></td>
+                                    <td>Thu, Jul 9, 2020 3:54 PM</td>
+                                    <td>$107.85</td>
+                                    <td>2</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/2.png"></td>
+                                    <td> Tiger Nixon	</td>
+                                    <td>The Square restaurants</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-danger btn-round">rejected</button></td>
+                                    <td>Thu, Jul 9, 2020 3:19 PM</td>
+                                    <td>$83.65</td>
+                                    <td>2</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/3.png"></td>
+                                    <td> AMITKUMAR CHAUHAN</td>
+                                    <td>Jassi de Parathe</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-primary btn-round">created</button></td>
+                                    <td>Thu, Jul 9, 2020 2:28 PM</td>
+                                    <td>$46.62</td>
+                                    <td>2</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                                 <tr>
+                                    <td><img class="img-profile rounded-circle" src="/Back/img/user/4.png"></td>
+                                    <td> Umed Ibodulloev</td>
+                                    <td>Metro Resto</td>
+                                    <td><button disabled="" type="button" class="btn btn-sm btn-success btn-round">delivered</button></td>
+                                    <td>Thu, Jul 9, 2020 1:26 PM</td>
+                                    <td>$66.71</td>
+                                    <td>1</td>
+                                    <td><a href="/Back/edit-order.html" class="btn btn-primary btn-sm">View</a></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </main>
+            
+         </div>
+        </div>
+    {% endblock %}
