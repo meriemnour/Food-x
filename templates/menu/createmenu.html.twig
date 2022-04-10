@@ -134,13 +134,14 @@
                                 </div>
                                 <div class="card-body">
                                     <!-- /box_general-->
-                                    {{ form_start(form) }}
+                                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
                                     <div class="box_general padding_bottom">
                                         <div class="wrapper_indent">
                                             <div class="form-group">
                                                 <label>Menu Category</label>
                                                 {{form_widget(form.category,{'attr':{'class': 'form-control'  }} )}}
                                             </div>
+                                            {{ form_errors(form.category,{'attr':{'class':'text-danger'}}) }}
 
                                             <div class="strip_menu_items">
                                                 <div class="row">
@@ -151,18 +152,24 @@
                                                                     <label>Menu Name</label>
                                                                     {{form_widget(form.name,{'attr':{'class': 'form-control'  }} )}}
                                                                 </div>
+                                                                {{ form_errors(form.name,{'attr':{'class':'text-danger'}}) }}
+
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label>Price</label>
                                                                     {{form_widget(form.price,{'attr':{'class': 'form-control'  }} )}}
                                                                 </div>
+                                                                {{ form_errors(form.price,{'attr':{'class':'text-danger'}}) }}
+
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Short description</label>
                                                             {{form_widget(form.description,{'attr':{'class': 'form-control'  }} )}}
                                                         </div>
+                                                        {{ form_errors(form.description,{'attr':{'class':'text-danger'}}) }}
+
                                                         <!-- End form-group -->
                                                     </div>
                                                     <!-- End row -->
@@ -177,6 +184,7 @@
                             <div class="text-right mb-4">
                                 {{form_widget(form.Submit,{'attr':{'class': 'btn btn-success'  }} )}}
                             </div>
+
                             {{ form_end(form) }}
                         </div>
                     </div></div></main>

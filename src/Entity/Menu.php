@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MenuRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MenuRepository::class)
@@ -18,23 +19,48 @@ class Menu
     private $id;
 
     /**
+     * @Assert\NotBlank(message="field can't be empty")
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage="The minimum length is 5"
+     *
+     *     )
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     *  @Assert\NotBlank(message="field can't be empty")
+     *   @Assert\Range(
+     *      min = 1,
+     *      max = 180,
+     *      minMessage = "Minimum Price Is 1",
+     *      maxMessage = "Maximum Price is 500"
+     * )
      * @ORM\Column(type="integer")
      */
     private $price;
 
     /**
+     * @Assert\NotBlank(message="field can't be empty")
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage="The minimum length is 5"
+     *
+     *     )
      * @ORM\Column(type="string", length=255)
      */
     private $category;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+  /**
+ * @Assert\NotBlank(message="field can't be empty")
+ * @Assert\Length(
+ *      min = 7,
+ *      max = 100,
+ *      minMessage = "The minimum length is 7 ",
+ *      maxMessage = "The maximum length is 100" )
+ * @ORM\Column(type="string", length=255)
+ */
     private $description;
 
     public function getId(): ?int
