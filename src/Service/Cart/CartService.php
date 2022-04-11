@@ -49,13 +49,14 @@ class CartService
         }
         return $panierwithdata;
     }
-public function getTotal(): float{
-    $total = 0;
-    foreach ($this->getFullCart() as $item)
-    {
-        $total += $item['menu']->getPrice() * $item['quantity'];
-    }
-return $total;
 
-}
+    public function getTotal(): float
+    {
+        $total = 0;
+        foreach ($this->getFullCart() as $item) {
+            $total += $item['menu']->getPrice() * $item['quantity'];
+        }
+        return $total;
+
+    }
 }

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220408092248 extends AbstractMigration
+final class Version20220410164954 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20220408092248 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE menu ADD category VARCHAR(255) NOT NULL, ADD description VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE inorder DROP orderid_id');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE menu DROP category, DROP description');
+        $this->addSql('ALTER TABLE inorder ADD orderid_id INT NOT NULL');
     }
 }

@@ -23,14 +23,16 @@ class Inorder
     private $menu_id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Order",inversedBy="inorder")
      */
-    private $order_id;
+
+    private $order;
 
     /**
      * @ORM\Column(type="integer")
      */
     private $quantity;
+
 
     public function getId(): ?int
     {
@@ -49,14 +51,14 @@ class Inorder
         return $this;
     }
 
-    public function getOrderId(): ?int
+    public function getOrder(): ?Order
     {
-        return $this->order_id;
+        return $this->order;
     }
 
-    public function setOrderId(int $order_id): self
+    public function setOrder(?Order $order): self
     {
-        $this->order_id = $order_id;
+        $this->order = $order;
 
         return $this;
     }
