@@ -35,6 +35,11 @@ class Order
      */
     private $time_stamp;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $total;
+
 
     public function getId(): ?int
     {
@@ -73,6 +78,18 @@ class Order
     public function setTimeStamp(\DateTimeInterface $time_stamp): self
     {
         $this->time_stamp = $time_stamp;
+
+        return $this;
+    }
+
+    public function getTotal(): ?int
+    {
+        return $this->total;
+    }
+
+    public function setTotal(int $total): self
+    {
+        $this->total = $total;
 
         return $this;
     }

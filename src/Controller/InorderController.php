@@ -23,6 +23,7 @@ class InorderController extends AbstractController
         $order->setStatus("On Delevery");
         $date = new \DateTime('@'.strtotime('now'));
         $order->setTimeStamp( $date);
+        $order->setTotal($cartService->getTotal());
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager1->persist($order);
@@ -46,7 +47,7 @@ class InorderController extends AbstractController
             // actually executes the queries (i.e. the INSERT query)
             $entityManager->flush();
         }
-        return new Response('Thanks ');
+        return $this->render('thanks/thanks.html.twig', []);
     }
 
 }

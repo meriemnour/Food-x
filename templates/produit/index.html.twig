@@ -44,7 +44,7 @@
                 {% for menu in m %}
                     {% if (  menu.category=='Starters' ) %}
                         <div class="gold-members p-3 border-bottom">
-                            <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
+                            <a href="{{ path('cart_add',{'id':menu.id}) }}" class="btn btn-outline-secondary btn-sm  float-right" >ADD</a>
                             <div class="media">
                                 <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>
                                 <div class="media-body">
@@ -72,7 +72,7 @@
                 {% for menu in m %}
                     {% if (  menu.category=='Vegetarian' ) %}
                         <div class="gold-members p-3 border-bottom">
-                            <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
+                            <a href="{{ path('cart_add',{'id':menu.id}) }}" class="btn btn-outline-secondary btn-sm  float-right" >ADD</a>
                             <div class="media">
                                 <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>
                                 <div class="media-body">
