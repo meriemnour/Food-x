@@ -33,7 +33,7 @@ class Menu
      *  @Assert\NotBlank(message="field can't be empty")
      *   @Assert\Range(
      *      min = 1,
-     *      max = 180,
+     *      max = 500,
      *      minMessage = "Minimum Price Is 1",
      *      maxMessage = "Maximum Price is 500"
      * )

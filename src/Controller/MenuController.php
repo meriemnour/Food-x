@@ -16,8 +16,11 @@ class MenuController extends AbstractController
      */
     public function index(): Response
     {
+
         $menus = $this->getDoctrine()->getManager()->getRepository(Menu::class)->findAll();
         return $this->render('menu/index.html.twig', ['m' => $menus]
+
+
         );
     }
 
@@ -33,6 +36,7 @@ class MenuController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($menu);
             $em->flush();
+            $this->addFlash('info','added successfully!');
             return $this->redirectToRoute('display_menu');
 
         }
@@ -50,6 +54,7 @@ class MenuController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($menu);
             $em->flush();
+            $this->addFlash('info2','Menu Deleted!');
 
             return $this->redirectToRoute('display_menu');
         }
@@ -64,6 +69,8 @@ class MenuController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
+            $this->addFlash('info3','Menu Updated!');
+
             return $this->redirectToRoute('display_menu');
 
         }

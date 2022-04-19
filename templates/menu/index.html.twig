@@ -145,12 +145,28 @@
                             .
                         </div>
                     </div>
+                    {% for message in app.flashes('info') %}
+                        <div class="alert alert-success" >
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% for message in app.flashes('info2') %}
+                        <div class="alert alert-danger" >
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% for message in app.flashes('info3') %}
+                        <div class="alert alert-warning" >
+                            {{ message }}
+                        </div>
+                    {% endfor %}
                     <div class="card mb-4">
                         <div class="card-header">
                             <svg class="svg-inline--fa fa-table fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="table" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224 416H64v-96h160v96zm0-160H64v-96h160v96zm224 160H288v-96h160v96zm0-160H288v-96h160v96z"></path></svg><!-- <i class="fas fa-table mr-1"></i> -->
                             DataTable Example
                         </div>
                         <div class="card-body">
+
                             <div class="table-responsive">
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                                 <thead>
